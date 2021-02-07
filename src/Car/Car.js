@@ -1,9 +1,9 @@
 import React from "react";
 
-const Car = () => {
+const Car = ({ brand, model }) => {
   return (
     <p>
-      I'm a Car, a model built in year {"19" + Math.floor(Math.random() * 30)}
+      I'm a Car built by {brand} and my model is {model}
     </p>
   );
 };
