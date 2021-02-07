@@ -1,10 +1,13 @@
 import React from "react";
 
-const Car = ({ brand, model }) => {
+const Car = ({ brand, model, children }) => {
   return (
-    <p>
-      I'm a Car built by {brand} and my model is {model}
-    </p>
+    <div>
+      <h4>
+        I'm a Car built by {brand} and my model is {model}
+      </h4>
+      <p>{children}</p>
+    </div>
   );
 };
 
