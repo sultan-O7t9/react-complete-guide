@@ -10,12 +10,16 @@ class App extends React.Component {
       { brand: "Ferrari", model: "LaFerrari" },
     ],
   };
+  switchNameHandler = () => {
+    console.log("Clicked");
+  };
 
   render() {
     return (
       <div className="App">
         <h1>Hello</h1>
         <h2>Props for the first time</h2>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <Car
           brand={this.state.cars[0].brand}
           model={this.state.cars[0].model}
