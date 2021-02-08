@@ -1,0 +1,22 @@
+.Car {
+  width: 30%;
+  padding: 1rem 1.2rem;
+  border-radius: 25px;
+  margin: 1.5rem auto;
+  text-align: center;
+  background: linear-gradient(145deg, #86ffff, #71e6dc);
+  box-shadow: 10px 10px 20px #67d1c8, -10px -10px 20px #94ffff;
+}
+.Car input {
+  background-color: rgb(176, 248, 242);
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 50px;
+  border: 2px solid rgb(3, 243, 223);
+}
+.Car input:focus {
+  /*For Adding Rounded corner Outline, there is no outline-radius prop for that*/
+  outline: 0;
+  box-shadow: 0 0 0 2px rgb(3, 243, 223);
+  background-color: rgb(218, 255, 252);
+}

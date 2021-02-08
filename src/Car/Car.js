@@ -1,8 +1,9 @@
 import React from "react";
+import "./Car.css";
 
 const Car = ({ brand, model, children, change }) => {
   return (
-    <div>
+    <div className="Car">
       <h4>
         I'm a Car built by {brand} and my model is {model}
       </h4>
