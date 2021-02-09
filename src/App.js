@@ -11,24 +11,20 @@ class App extends React.Component {
     ],
     nameView: true,
   };
-  switchNameHandler = () => {
-    console.log("Clicked");
-  };
-  changeNameHandler = (event) => {
-    this.setState({
-      cars: [
-        { brand: "BMW", model: "M4" },
-        { brand: "Lorem ipsum", model: "P1" },
-        { brand: event.target.value, model: "AXS" },
-      ],
-    });
-  };
+
   toggleNameHandler = () => {
     let invName = !this.state.nameView;
     this.setState({ nameView: invName });
     console.log(invName, this.state.nameView);
   };
-
+  delCarHandler = (index) => {
+    const cars = this.state.cars;
+    console.log(cars);
+    cars.splice(index, 1);
+    //splice removes an element from the given index and reassigns the new array to the caller array
+    console.log(cars);
+    this.setState({ cars: cars });
+  };
   render() {
     const styles = {
       backgroundColor: "rgb(0, 231, 212)",
@@ -47,8 +43,16 @@ class App extends React.Component {
     if (this.state.nameView) {
       cars = (
         <div>
-          {this.state.cars.map((car) => {
-            return <Car brand={car.brand} model={car.model} />;
+          {this.state.cars.map((car, indexInCars) => {
+            return (
+              <Car
+                brand={car.brand}
+                model={car.model}
+                click={() => {
+                  this.delCarHandler(indexInCars);
+                }}
+              />
+            );
           })}
         </div>
       );

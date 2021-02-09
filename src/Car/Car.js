@@ -1,9 +1,9 @@
 import React from "react";
 import "./Car.css";
 
-const Car = ({ brand, model, children, change }) => {
+const Car = ({ brand, model, children, change, click }) => {
   return (
-    <div className="Car">
+    <div className="Car" onClick={click}>
       <h4>
         I'm a Car built by {brand} and my model is {model}
       </h4>
