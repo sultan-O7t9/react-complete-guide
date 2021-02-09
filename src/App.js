@@ -6,8 +6,8 @@ class App extends React.Component {
   state = {
     cars: [
       { brand: "BMW", model: "M4" },
-      { brand: "Mclaren", model: "P1" },
-      { brand: "Ferrari", model: "LaFerrari" },
+      { brand: "Lorem ipsum", model: "P1" },
+      { brand: "XYZ...", model: "AXS" },
     ],
   };
   switchNameHandler = () => {
@@ -17,24 +17,37 @@ class App extends React.Component {
     this.setState({
       cars: [
         { brand: "BMW", model: "M4" },
-        { brand: "Mclaren", model: "P1" },
-        { brand: event.target.value, model: "LaFerrari" },
+        { brand: "Lorem ipsum", model: "P1" },
+        { brand: event.target.value, model: "AXS" },
       ],
     });
   };
 
   render() {
+    const styles = {
+      backgroundColor: "rgb(0, 231, 212)",
+      padding: "1rem 1.2rem",
+      borderRadius: "50px",
+      border: "2px solid rgb(100, 255, 251)",
+      fontSize: "1rem",
+      color: "rgb(212, 255, 251)",
+      outline: "none",
+      cursor: "pointer",
+      fontWeight: "bold",
+    };
     return (
       <div className="App">
         <h1>Hello</h1>
         <h2>Props for the first time</h2>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button style={styles} onClick={this.switchNameHandler}>
+          Switch Name
+        </button>
         <Car
           brand={this.state.cars[0].brand}
           model={this.state.cars[0].model}
         />
         <Car brand={this.state.cars[1].brand} model={this.state.cars[1].model}>
-          Better One!
+          Better One!"(using props.children)"
         </Car>
         <Car
           brand={this.state.cars[2].brand}
