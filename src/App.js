@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React /*, { useState } */ from "react";
 import "./App.css";
 import Car from "./Car/Car";
 
 class App extends React.Component {
   state = {
     cars: [
-      { brand: "BMW", model: "M4" },
-      { brand: "Lorem ipsum", model: "P1" },
-      { brand: "XYZ...", model: "AXS" },
+      { id: "car1", brand: "BMW", model: "M4" },
+      { id: "car2", brand: "Lorem ipsum", model: "P1" },
+      { id: "car3", brand: "XYZ...", model: "AXS" },
     ],
     nameView: true,
   };
@@ -48,6 +48,7 @@ class App extends React.Component {
             return (
               <Car
                 brand={car.brand}
+                key={car.id}
                 model={car.model}
                 click={() => {
                   this.delCarHandler(indexInCars);
