@@ -12,6 +12,25 @@ class App extends React.Component {
     nameView: true,
   };
 
+  changeBrandHandler = (event, carID) => {
+    const carIndex = this.state.cars.findIndex((car) => {
+      return car.id === carID;
+    });
+    console.log(carIndex);
+    //These two lines are for accessing, copying the OBJECT on which event is triggered and modifying its brand property
+    const modifiedCar = { ...this.state.cars[carIndex] };
+    console.log(modifiedCar);
+    modifiedCar.brand = event.target.value;
+    console.log(modifiedCar.brand);
+    //Now modifiedCar is the object with updated brand, now we have to use setState to update this object in this.state.
+    //Also we dont want to update the state object directly, so for that, lets copy the part of the state that is needed to be updated in a new variable...
+    const modifiedCars = [...this.state.cars];
+    modifiedCars[carIndex] = modifiedCar;
+    console.log(modifiedCars);
+
+    this.setState({ cars: modifiedCars }); //keep the name or u will be fkd up for several hours
+  };
+
   toggleNameHandler = () => {
     let invName = !this.state.nameView;
     this.setState({ nameView: invName });
@@ -50,9 +69,10 @@ class App extends React.Component {
                 brand={car.brand}
                 key={car.id}
                 model={car.model}
-                click={() => {
+                del={() => {
                   this.delCarHandler(indexInCars);
                 }}
+                change={(event) => this.changeBrandHandler(event, car.id)}
               />
             );
           })}

@@ -1,10 +1,10 @@
 import React from "react";
 import "./Car.css";
 
-const Car = ({ brand, model, children, change, click }) => {
+const Car = ({ brand, model, children, change, del }) => {
   return (
-    <div className="Car" onClick={click}>
-      <h4>
+    <div className="Car">
+      <h4 onClick={del}>
         I'm a Car built by {brand} and my model is {model}
       </h4>
       <p>{children}</p>
