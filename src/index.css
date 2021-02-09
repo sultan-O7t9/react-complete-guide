@@ -7,6 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(145deg, #86ffff, #71e6dc);
   /* background-color: rgb(125, 255, 244); */
+  height: 100vh;
 }
 
 code {

@@ -18,7 +18,8 @@ class App extends React.Component {
     console.log(invName, this.state.nameView);
   };
   delCarHandler = (index) => {
-    const cars = this.state.cars;
+    //const cars = this.state.cars.slice();--->Deep copy using slice(), when no arguments given it deep copies the array and returns it
+    const cars = [...this.state.cars]; //Deep copy using spread operator
     console.log(cars);
     cars.splice(index, 1);
     //splice removes an element from the given index and reassigns the new array to the caller array
