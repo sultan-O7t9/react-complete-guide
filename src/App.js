@@ -47,23 +47,9 @@ class App extends React.Component {
     if (this.state.nameView) {
       cars = (
         <div>
-          <Car
-            brand={this.state.cars[0].brand}
-            model={this.state.cars[0].model}
-          />
-          <Car
-            brand={this.state.cars[1].brand}
-            model={this.state.cars[1].model}
-          >
-            Better One!"(using props.children)"
-          </Car>
-          <Car
-            brand={this.state.cars[2].brand}
-            model={this.state.cars[2].model}
-            change={this.changeNameHandler}
-          >
-            Best One!
-          </Car>
+          {this.state.cars.map((car) => {
+            return <Car brand={car.brand} model={car.model} />;
+          })}
         </div>
       );
     }
