@@ -9,6 +9,7 @@ class App extends React.Component {
       { brand: "Lorem ipsum", model: "P1" },
       { brand: "XYZ...", model: "AXS" },
     ],
+    nameView: true,
   };
   switchNameHandler = () => {
     console.log("Clicked");
@@ -21,6 +22,11 @@ class App extends React.Component {
         { brand: event.target.value, model: "AXS" },
       ],
     });
+  };
+  toggleNameHandler = () => {
+    let invName = !this.state.nameView;
+    this.setState({ nameView: invName });
+    console.log(invName, this.state.nameView);
   };
 
   render() {
@@ -39,23 +45,30 @@ class App extends React.Component {
       <div className="App">
         <h1>Hello</h1>
         <h2>Props for the first time</h2>
-        <button style={styles} onClick={this.switchNameHandler}>
-          Switch Name
+        <button style={styles} onClick={this.toggleNameHandler}>
+          Toggle Cars
         </button>
-        <Car
-          brand={this.state.cars[0].brand}
-          model={this.state.cars[0].model}
-        />
-        <Car brand={this.state.cars[1].brand} model={this.state.cars[1].model}>
-          Better One!"(using props.children)"
-        </Car>
-        <Car
-          brand={this.state.cars[2].brand}
-          model={this.state.cars[2].model}
-          change={this.changeNameHandler}
-        >
-          Best One!
-        </Car>
+        {this.state.nameView ? (
+          <div>
+            <Car
+              brand={this.state.cars[0].brand}
+              model={this.state.cars[0].model}
+            />
+            <Car
+              brand={this.state.cars[1].brand}
+              model={this.state.cars[1].model}
+            >
+              Better One!"(using props.children)"
+            </Car>
+            <Car
+              brand={this.state.cars[2].brand}
+              model={this.state.cars[2].model}
+              change={this.changeNameHandler}
+            >
+              Best One!
+            </Car>
+          </div>
+        ) : null}
       </div>
     );
   }
