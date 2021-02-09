@@ -41,6 +41,33 @@ class App extends React.Component {
       cursor: "pointer",
       fontWeight: "bold",
     };
+
+    let cars = null;
+
+    if (this.state.nameView) {
+      cars = (
+        <div>
+          <Car
+            brand={this.state.cars[0].brand}
+            model={this.state.cars[0].model}
+          />
+          <Car
+            brand={this.state.cars[1].brand}
+            model={this.state.cars[1].model}
+          >
+            Better One!"(using props.children)"
+          </Car>
+          <Car
+            brand={this.state.cars[2].brand}
+            model={this.state.cars[2].model}
+            change={this.changeNameHandler}
+          >
+            Best One!
+          </Car>
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hello</h1>
@@ -48,27 +75,7 @@ class App extends React.Component {
         <button style={styles} onClick={this.toggleNameHandler}>
           Toggle Cars
         </button>
-        {this.state.nameView ? (
-          <div>
-            <Car
-              brand={this.state.cars[0].brand}
-              model={this.state.cars[0].model}
-            />
-            <Car
-              brand={this.state.cars[1].brand}
-              model={this.state.cars[1].model}
-            >
-              Better One!"(using props.children)"
-            </Car>
-            <Car
-              brand={this.state.cars[2].brand}
-              model={this.state.cars[2].model}
-              change={this.changeNameHandler}
-            >
-              Best One!
-            </Car>
-          </div>
-        ) : null}
+        {cars}
       </div>
     );
   }
