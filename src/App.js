@@ -28,7 +28,7 @@ class App extends React.Component {
     modifiedCars[carIndex] = modifiedCar;
     console.log(modifiedCars);
 
-    this.setState({ cars: modifiedCars }); //keep the name or u will be fkd up for several hours
+    this.setState({ cars: modifiedCars }); //keep the name same or u will be fkd up for several hours
   };
 
   toggleNameHandler = () => {
@@ -78,6 +78,7 @@ class App extends React.Component {
           })}
         </div>
       );
+      styles.backgroundColor = "rgb(255, 82, 82)";
     }
 
     return (
