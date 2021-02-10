@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const AppHead = (props) => {
+  //Finally using useEffect, the second most important React Hook, an alternative for Lifecycle Hooks...
+  useEffect(() => {
+    console.log(
+      "[AppHead.js] useEffect executing, it will execute each time there is re-rendering"
+    );
+  });
+  useEffect(() => {
+    console.log(
+      "[AppHead.js] useEffect executing, it will execute for first time and every time we press the Toggle Button; when props.toggle will change"
+    );
+  }, [props.toggle]);
+  useEffect(() => {
+    console.log(
+      "[AppHead.js] useEffect executing, it will execute for first time only, guess why? cuz the dependency list is empty"
+    );
+  }, []);
+
   const styles = {
     backgroundColor: "rgb(0, 231, 212)",
     padding: "1rem 1.2rem",
