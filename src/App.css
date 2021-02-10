@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+h1 {
+  margin: 0;
+}

@@ -7,7 +7,9 @@ class App extends React.Component {
     cars: [
       { id: "car1", brand: "BMW", model: "M4" },
       { id: "car2", brand: "Lorem ipsum", model: "P1" },
-      { id: "car3", brand: "XYZ...", model: "AXS" },
+      { id: "car3", brand: "XYaldm", model: "Asdsd" },
+      { id: "car4", brand: "sdkald", model: "Ssdaew" },
+      { id: "car5", brand: "asdla", model: "sdXS" },
     ],
     nameView: true,
   };
@@ -81,10 +83,17 @@ class App extends React.Component {
       styles.backgroundColor = "rgb(255, 82, 82)";
     }
 
+    const classes = [];
+    {
+      let length = this.state.cars.length;
+      if (length % 2 === 0) classes.push("red");
+      else classes.push("green");
+    }
+
     return (
       <div className="App">
         <h1>Hello</h1>
-        <h2>Props for the first time</h2>
+        <h2 className={classes.join(" ")}>Props for the first time</h2>
         <button style={styles} onClick={this.toggleNameHandler}>
           Toggle Cars
         </button>
