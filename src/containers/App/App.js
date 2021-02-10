@@ -4,31 +4,41 @@ import Cars from "../../components/Cars/Cars";
 import AppHead from "../../components/AppHead/AppHead";
 
 class App extends React.Component {
-  state = {
-    cars: [
-      { id: "car1", brand: "ABC", model: "abc" },
-      { id: "car2", brand: "DEF", model: "def" },
-      { id: "car3", brand: "GHI", model: "ghi" },
-      { id: "car4", brand: "JKL", model: "jkl" },
-    ],
-    nameView: true,
-  };
+  //Adding constructor
+  constructor(props) {
+    super(props);
+    this.state = {
+      cars: [
+        { id: "car1", brand: "ABC", model: "abc" },
+        { id: "car2", brand: "DEF", model: "def" },
+        { id: "car3", brand: "GHI", model: "ghi" },
+        { id: "car4", brand: "JKL", model: "jkl" },
+      ],
+      nameView: true,
+    };
+    console.log("[App.js] constructor executing");
+  }
+  //Adding getDerivedStateFromProps
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps executing");
+    return state;
+  }
 
   changeBrandHandler = (event, carID) => {
     const carIndex = this.state.cars.findIndex((car) => {
       return car.id === carID;
     });
-    console.log(carIndex);
+    // console.log(carIndex);
     //These two lines are for accessing, copying the OBJECT on which event is triggered and modifying its brand property
     const modifiedCar = { ...this.state.cars[carIndex] };
-    console.log(modifiedCar);
+    // console.log(modifiedCar);
     modifiedCar.brand = event.target.value;
-    console.log(modifiedCar.brand);
+    // console.log(modifiedCar.brand);
     //Now modifiedCar is the object with updated brand, now we have to use setState to update this object in this.state.
     //Also we dont want to update the state object directly, so for that, lets copy the part of the state that is needed to be updated in a new variable...
     const modifiedCars = [...this.state.cars];
     modifiedCars[carIndex] = modifiedCar;
-    console.log(modifiedCars);
+    // console.log(modifiedCars);
 
     this.setState({ cars: modifiedCars }); //keep the name same or u will be fkd up for several hours
   };
@@ -36,20 +46,21 @@ class App extends React.Component {
   toggleNameHandler = () => {
     let invName = !this.state.nameView;
     this.setState({ nameView: invName });
-    console.log(invName, this.state.nameView);
+    // console.log(invName, this.state.nameView);
   };
   delCarHandler = (index) => {
     //const cars = this.state.cars.slice();--->Deep copy using slice(), when no arguments given it deep copies the array and returns it
     const cars = [...this.state.cars]; //Deep copy using spread operator
-    console.log(cars);
+    // console.log(cars);
     cars.splice(index, 1);
     //splice removes an element from the given index and reassigns the new array to the caller array
-    console.log(cars);
+    // console.log(cars);
     this.setState({ cars: cars });
   };
+  //Adding render()
   render() {
     let cars = null;
-
+    console.log("[App.js] render executing");
     if (this.state.nameView) {
       cars = (
         <Cars
@@ -68,6 +79,12 @@ class App extends React.Component {
         />
         {cars}
       </div>
+    );
+  }
+  //Adding componentDidMount
+  componentDidMount() {
+    console.log(
+      "[App.js] componentDidMount executing and after it our Mounting lifecycle ends"
     );
   }
 }
